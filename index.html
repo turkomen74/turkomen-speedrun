@@ -22,24 +22,24 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f1112;
+            background-color: #000000;
         }
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #181a1b;
+            background: #000000;
         }
         ::-webkit-scrollbar-thumb {
-            background: #2d3134;
+            background: #161616;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #3e4448;
+            background: #222222;
         }
         .game-nav-active {
-            background-color: #242729;
+            background-color: #080808;
             border-left: 4px solid #1a73e8;
             color: #ffffff !important;
             font-weight: 600;
@@ -48,11 +48,11 @@
 </head>
 <body class="text-slate-200 flex flex-col min-h-screen antialiased">
 
-    <header class="bg-[#181a1b] text-white sticky top-0 z-50 px-4 py-2.5 flex items-center justify-between border-b border-[#2d3134]">
+    <header class="bg-[#000000] text-white sticky top-0 z-50 px-4 py-2.5 flex items-center justify-between border-b border-[#111111]">
         <div class="flex items-center gap-6">
             <div class="flex items-center gap-2.5 cursor-pointer" onclick="navigateTo('home')">
-                <div class="w-8 h-8 rounded overflow-hidden flex items-center justify-center bg-[#242729] border border-[#2d3134]">
-                    <img src="ikon.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a73e8/ffffff?text=T'" class="w-full h-full object-cover" alt="TURKOMEN Logo">
+                <div class="w-8 h-8 rounded overflow-hidden flex items-center justify-center bg-[#080808] border border-[#111111]">
+                    <img src="ikon.png" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1a73e8/ffffff?text=T'" class="w-full h-full object-contain" alt="TURKOMEN Logo">
                 </div>
                 <div>
                     <h1 class="font-extrabold text-sm tracking-wide text-white uppercase flex items-center gap-1.5">
@@ -67,7 +67,7 @@
         </div>
 
         <div class="flex items-center gap-3">
-            <button onclick="navigateTo('help')" class="flex items-center justify-center w-8 h-8 rounded bg-[#242729] border border-[#2d3134] hover:bg-[#1a73e8] hover:text-white text-slate-300 transition-colors" title="Nasıl Sıralamaya Girilir?">
+            <button onclick="navigateTo('help')" class="flex items-center justify-center w-8 h-8 rounded bg-[#080808] border border-[#111111] hover:bg-[#1a73e8] hover:text-white text-slate-300 transition-colors" title="Nasıl Sıralamaya Girilir?">
                 <i class="fa-solid fa-question text-sm font-bold"></i>
             </button>
         </div>
@@ -75,17 +75,28 @@
 
     <div class="flex flex-1 flex-col md:flex-row max-w-[1440px] w-full mx-auto p-4 gap-4">
         
-        <aside class="w-full md:w-72 bg-[#181a1b] border border-[#2d3134] rounded-lg p-3.5 flex flex-col gap-4 self-start">
+        <aside class="w-full md:w-80 bg-[#080808] border border-[#111111] rounded-lg p-3.5 flex flex-col gap-4 self-start">
             <div>
-                <div class="flex items-center justify-between px-1 mb-2">
-                    <h2 class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Oyun Listesi</h2>
-                    <span class="text-[9px] bg-[#242729] text-slate-300 font-extrabold px-1.5 py-0.5 rounded border border-[#2d3134]">3 OYUN</span>
+                <div class="flex items-center justify-between px-1 mb-3">
+                    <h2 class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Platform Seçimi</h2>
+                    <span id="game-count-badge" class="text-[9px] bg-[#000000] text-slate-300 font-extrabold px-1.5 py-0.5 rounded border border-[#111111]">4 OYUN</span>
+                </div>
+
+                <div class="flex bg-[#000000] border border-[#111111] rounded p-1 mb-4">
+                    <button onclick="filterPlatform('pc')" id="btn-platform-pc" class="flex-1 text-center py-2 rounded text-xs font-bold transition-all bg-[#1a73e8] text-white">
+                        <i class="fa-solid fa-desktop mr-1.5"></i> PC
+                    </button>
+                    <button onclick="filterPlatform('mobile')" id="btn-platform-mobile" class="flex-1 text-center py-2 rounded text-xs font-bold transition-all text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-mobile-screen-button mr-1.5"></i> Mobil
+                    </button>
                 </div>
                 
                 <nav class="flex flex-col gap-1.5" id="games-list-nav">
                     
-                    <button onclick="navigateToGame('game-1')" id="nav-game-1" class="sidebar-btn flex items-center gap-3 w-full p-2 rounded-md text-left transition-all duration-150 hover:bg-[#242729] text-slate-300 border border-transparent">
-                        <img src="evehosgeldin.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoşgeldin'" class="w-8 h-10 object-cover rounded border border-[#2d3134]" alt="Eve Hoş Geldin">
+                    <button onclick="navigateToGame('game-1')" id="nav-game-1" data-platform="pc" class="sidebar-btn flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evehosgeldin.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoşgeldin'" class="w-full h-full object-contain" alt="Eve Hoş Geldin">
+                        </div>
                         <div class="flex-1 min-w-0">
                             <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin</p>
                             <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 1</span>
@@ -93,8 +104,21 @@
                         <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
                     </button>
 
-                    <button onclick="navigateToGame('game-2')" id="nav-game-2" class="sidebar-btn flex items-center gap-3 w-full p-2 rounded-md text-left transition-all duration-150 hover:bg-[#242729] text-slate-300 border border-transparent">
-                        <img src="evdenkac.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaç'" class="w-8 h-10 object-cover rounded border border-[#2d3134]" alt="Evden Kaç">
+                    <button onclick="navigateToGame('game-4')" id="nav-game-4" data-platform="pc" class="sidebar-btn flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evehosgeldinremake.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoşgeldin+REMAKE'" class="w-full h-full object-contain" alt="Eve Hoş Geldin REMAKE">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin REMAKE</p>
+                            <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 1 Remake</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                    </button>
+
+                    <button onclick="navigateToGame('game-2')" id="nav-game-2" data-platform="pc" class="sidebar-btn flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evdenkac.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaç'" class="w-full h-full object-contain" alt="Evden Kaç">
+                        </div>
                         <div class="flex-1 min-w-0">
                             <p class="text-xs font-bold text-slate-200 truncate">Evden Kaç</p>
                             <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 2</span>
@@ -102,8 +126,10 @@
                         <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
                     </button>
 
-                    <button onclick="navigateToGame('game-3')" id="nav-game-3" class="sidebar-btn flex items-center gap-3 w-full p-2 rounded-md text-left transition-all duration-150 hover:bg-[#242729] text-slate-300 border border-transparent">
-                        <img src="evdenkacamazsin.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaçamazsın'" class="w-8 h-10 object-cover rounded border border-[#2d3134]" alt="Evden Kaçamazsın">
+                    <button onclick="navigateToGame('game-3')" id="nav-game-3" data-platform="pc" class="sidebar-btn flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evdenkacamazsin.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaçamazsın'" class="w-full h-full object-contain" alt="Evden Kaçamazsın">
+                        </div>
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-1">
                                 <p class="text-xs font-bold text-slate-200 truncate">Evden Kaçamazsın</p>
@@ -114,15 +140,59 @@
                         <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
                     </button>
 
+                    <button onclick="navigateToGame('game-m1')" id="nav-game-m1" data-platform="mobile" class="sidebar-btn hidden flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evehosgeldinandroid.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoş+Geldin+Mobile'" class="w-full h-full object-contain" alt="Eve Hoş Geldin Mobile">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin Mobile</p>
+                            <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 1 Mobil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                    </button>
+
+                    <button onclick="navigateToGame('game-m4')" id="nav-game-m4" data-platform="mobile" class="sidebar-btn hidden flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evehosgeldinremakeandroid.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoş+Geldin+REMAKE+Mobile'" class="w-full h-full object-contain" alt="Eve Hoş Geldin REMAKE Mobile">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin REMAKE Mobile</p>
+                            <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 1 Remake Mobil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                    </button>
+
+                    <button onclick="navigateToGame('game-m2')" id="nav-game-m2" data-platform="mobile" class="sidebar-btn hidden flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evdenkacandroid.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaç+Mobile'" class="w-full h-full object-contain" alt="Evden Kaç Mobile">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-200 truncate">Evden Kaç Mobile</p>
+                            <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 2 Mobil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                    </button>
+
+                    <button onclick="navigateToGame('game-m3')" id="nav-game-m3" data-platform="mobile" class="sidebar-btn hidden flex items-center gap-3 w-full p-3 rounded-md text-left transition-all duration-150 hover:bg-[#000000] text-slate-300 border border-transparent">
+                        <div class="w-12 h-14 bg-black rounded border border-[#111111] flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img src="evdenkacamassinandroid.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Evden+Kaçamazsın+Mobile'" class="w-full h-full object-contain" alt="Evden Kaçamazsın Mobile">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-200 truncate">Evden Kaçamazsın Mobile</p>
+                            <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 3 Mobil</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
+                    </button>
+
                 </nav>
             </div>
         </aside>
 
-        <main class="flex-1 bg-[#181a1b] border border-[#2d3134] rounded-lg p-5 shadow-sm min-h-[500px]">
+        <main class="flex-1 bg-[#000000] border border-[#111111] rounded-lg p-5 shadow-sm min-h-[500px]">
             
             <div id="view-home" class="view-panel block">
                 <div class="flex flex-col items-center justify-center py-24 text-center">
-                    <div class="w-16 h-16 bg-[#242729] border border-[#2d3134] rounded-full flex items-center justify-center text-[#1a73e8] text-2xl mb-4">
+                    <div class="w-16 h-16 bg-[#080808] border border-[#111111] rounded-full flex items-center justify-center text-[#1a73e8] text-2xl mb-4">
                         <i class="fa-solid fa-gamepad"></i>
                     </div>
                 </div>
@@ -130,27 +200,27 @@
 
             <div id="view-game-detail" class="view-panel hidden space-y-6">
                 
-                <div class="relative bg-[#242729] border border-[#2d3134] rounded-lg p-4 flex flex-col sm:flex-row items-center sm:items-start gap-4 text-slate-200">
-                    <div class="w-24 h-32 bg-[#181a1b] rounded border border-[#2d3134] flex-shrink-0 overflow-hidden">
-                        <img id="game-cover" src="" onerror="this.src='https://placehold.co/100x130/1a73e8/ffffff?text=Game'" class="w-full h-full object-cover" alt="Game Cover">
+                <div class="relative bg-[#080808] border border-[#111111] rounded-lg p-4 flex flex-col sm:flex-row items-center sm:items-start gap-4 text-slate-200">
+                    <div class="w-24 h-32 bg-[#000000] rounded border border-[#111111] flex-shrink-0 overflow-hidden flex items-center justify-center">
+                        <img id="game-cover" src="" onerror="this.src='https://placehold.co/100x130/1a73e8/ffffff?text=Game'" class="w-full h-full object-contain" alt="Game Cover">
                     </div>
                     
                     <div class="flex-1 text-center sm:text-left space-y-1.5 min-w-0">
                         <div class="flex flex-wrap justify-center sm:justify-start gap-1.5">
                             <span class="bg-[#1a73e8] text-white text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase">Poppy Playtime Fan-Game</span>
-                            <span class="bg-[#181a1b] text-slate-300 text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase border border-[#2d3134]">PC</span>
+                            <span id="game-platform-badge" class="bg-[#000000] text-slate-300 text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase border border-[#111111]">PC</span>
                         </div>
                         <h2 id="game-title" class="text-xl font-extrabold text-white tracking-tight">Oyun Başlığı</h2>
                         <p id="game-description" class="text-slate-400 text-[11px] leading-relaxed max-w-2xl">Açıklama yükleniyor...</p>
                     </div>
 
-                    <div class="flex flex-col items-center sm:items-end justify-center px-4 py-2 bg-[#181a1b] border border-[#2d3134] rounded min-w-[120px]">
+                    <div class="flex flex-col items-center sm:items-end justify-center px-4 py-2 bg-[#000000] border border-[#111111] rounded min-w-[120px]">
                         <span class="text-[9px] text-slate-500 font-extrabold uppercase tracking-widest">Kayıtlı Speedrun</span>
                         <span id="game-stat-runs" class="text-xl font-black text-[#1a73e8]">0</span>
                     </div>
                 </div>
 
-                <div class="border-b border-[#2d3134] flex items-center justify-between text-xs font-semibold">
+                <div class="border-b border-[#111111] flex items-center justify-between text-xs font-semibold">
                     <div class="flex gap-1">
                         <button class="border-b-2 border-[#1a73e8] text-[#1a73e8] px-3 py-2 font-bold flex items-center gap-1.5">
                             <i class="fa-solid fa-medal"></i> Ana Tablo (Any%)
@@ -161,11 +231,11 @@
                     </div>
                 </div>
 
-                <div class="bg-[#181a1b] border border-[#2d3134] rounded-lg overflow-hidden">
+                <div class="bg-[#000000] border border-[#111111] rounded-lg overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-[#242729] border-b border-[#2d3134] text-[9px] text-slate-400 font-bold tracking-wider uppercase">
+                                <tr class="bg-[#080808] border-b border-[#111111] text-[9px] text-slate-400 font-bold tracking-wider uppercase">
                                     <th class="py-3 px-4 text-center w-12">Derece</th>
                                     <th class="py-3 px-4">Oyuncu Takma Adı</th>
                                     <th class="py-3 px-4 text-center">Bitirme Süresi</th>
@@ -174,13 +244,13 @@
                                     <th class="py-3 px-4 text-right">Detay</th>
                                 </tr>
                             </thead>
-                            <tbody id="leaderboard-body" class="divide-y divide-[#2d3134] text-xs text-slate-300">
+                            <tbody id="leaderboard-body" class="divide-y divide-[#111111] text-xs text-slate-300">
                             </tbody>
                         </table>
                     </div>
                     
                     <div id="leaderboard-empty" class="hidden flex flex-col items-center justify-center py-12 px-4 text-center">
-                        <div class="w-12 h-12 bg-[#242729] border border-dashed border-[#2d3134] rounded-full flex items-center justify-center text-slate-600 text-lg mb-2">
+                        <div class="w-12 h-12 bg-[#080808] border border-dashed border-[#111111] rounded-full flex items-center justify-center text-slate-600 text-lg mb-2">
                             <i class="fa-solid fa-hourglass"></i>
                         </div>
                         <h4 class="font-bold text-slate-300 text-sm">Burada Henüz Bir Speedrun Rekoru Yok</h4>
@@ -194,7 +264,7 @@
 
             <div id="view-run-detail" class="view-panel hidden space-y-4">
                 <div class="flex items-center gap-1.5 text-[11px] text-slate-400 font-semibold mb-1">
-                    <button onclick="navigateToGame('game-3')" class="hover:text-[#1a73e8] transition-colors">Evden Kaçamazsın</button>
+                    <button id="run-back-game-btn" onclick="navigateToGame('game-3')" class="hover:text-[#1a73e8] transition-colors">Evden Kaçamazsın</button>
                     <i class="fa-solid fa-angle-right text-[9px]"></i>
                     <span class="text-slate-300">Koşu Detayı</span>
                     <i class="fa-solid fa-angle-right text-[9px]"></i>
@@ -203,8 +273,8 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     <div class="lg:col-span-2 space-y-3">
-                        <div class="bg-[#181a1b] border border-[#2d3134] rounded-lg overflow-hidden">
-                            <div class="h-64 flex flex-col items-center justify-center bg-gradient-to-br from-[#181a1b] to-[#242729] p-6 text-center border-b border-[#2d3134]">
+                        <div class="bg-[#000000] border border-[#111111] rounded-lg overflow-hidden">
+                            <div class="h-64 flex flex-col items-center justify-center bg-gradient-to-br from-[#000000] to-[#080808] p-6 text-center border-b border-[#111111]">
                                 <div class="w-16 h-16 bg-[#1a73e8]/10 text-[#1a73e8] rounded-full flex items-center justify-center text-2xl mb-4 border border-[#1a73e8]/20">
                                     <i class="fa-solid fa-circle-play"></i>
                                 </div>
@@ -212,7 +282,7 @@
                                     Speedrun Videosunu İzle
                                 </a>
                             </div>
-                            <div class="p-4 flex items-center justify-between text-slate-200 bg-[#242729]">
+                            <div class="p-4 flex items-center justify-between text-slate-200 bg-[#080808]">
                                 <div class="flex items-center gap-2.5">
                                     <div class="w-8 h-8 rounded bg-amber-500 text-amber-950 font-black text-xs flex items-center justify-center">
                                         1st
@@ -231,20 +301,20 @@
                     </div>
 
                     <div class="space-y-4">
-                        <div class="bg-[#242729] border border-[#2d3134] rounded-lg p-4 text-slate-300 space-y-4">
-                            <div class="text-center pb-3 border-b border-[#2d3134]">
-                                <div class="w-16 h-16 mx-auto rounded-full bg-[#181a1b] border border-[#2d3134] flex items-center justify-center overflow-hidden">
-                                    <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/64x64/242729/ffffff?text=U'" class="w-full h-full object-cover" alt="Avatar">
+                        <div class="bg-[#080808] border border-[#111111] rounded-lg p-4 text-slate-300 space-y-4">
+                            <div class="text-center pb-3 border-b border-[#111111]">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-[#000000] border border-[#111111] flex items-center justify-center overflow-hidden">
+                                    <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/64x64/080808/ffffff?text=U'" class="w-full h-full object-cover" alt="Avatar">
                                 </div>
                                 <h4 id="run-detail-user" class="text-sm font-extrabold text-white mt-2">@korkioyunlarioynuyorum</h4>
                                 <div class="mt-2.5 flex justify-center">
-                                    <span class="text-amber-500 text-lg flex items-center justify-center w-8 h-8 rounded-full bg-amber-950/40 border border-amber-500/20" title="Birincilik">
+                                    <span class="text-amber-500 text-lg flex items-center justify-center w-8 h-8 rounded-full bg-[#000000] border border-amber-500/20" title="Birincilik">
                                         <i class="fa-solid fa-crown"></i>
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="p-3 bg-[#1e293b] border border-[#1a73e8]/30 rounded-md text-center">
+                            <div class="p-3 bg-[#0c1524] border border-[#1a73e8]/30 rounded-md text-center">
                                 <h5 class="text-[9px] font-extrabold text-[#1a73e8] uppercase tracking-widest mb-1">Geliştirici Başarı Tebriği</h5>
                                 <p class="text-xs font-bold text-white leading-relaxed">
                                     @korkioyunlarioynuyorum ADLI KULLANICI OYUNUMUZU 4 DAKİKA 47 SANİYE İLE BİTEREREK LİSTENİN BİRİNCİ SIRASINDA YER ALMIŞTIR.
@@ -252,17 +322,17 @@
                             </div>
 
                             <div class="space-y-2 text-xs">
-                                <div class="flex justify-between py-1 border-b border-[#2d3134]">
+                                <div class="flex justify-between py-1 border-b border-[#111111]">
                                     <span class="text-slate-500">Oyun:</span>
-                                    <span class="font-semibold text-slate-200">Evden Kaçamazsın</span>
+                                    <span id="run-detail-game" class="font-semibold text-slate-200">Evden Kaçamazsın</span>
                                 </div>
-                                <div class="flex justify-between py-1 border-b border-[#2d3134]">
+                                <div class="flex justify-between py-1 border-b border-[#111111]">
                                     <span class="text-slate-500">Doğrulayan:</span>
                                     <span class="font-semibold text-[#1a73e8]">TURKOMEN</span>
                                 </div>
-                                <div class="flex justify-between py-1 border-b border-[#2d3134]">
+                                <div class="flex justify-between py-1 border-b border-[#111111]">
                                     <span class="text-slate-500">Platform:</span>
-                                    <span class="font-semibold text-slate-200">PC</span>
+                                    <span id="run-detail-platform" class="font-semibold text-slate-200">PC</span>
                                 </div>
                                 <div class="flex justify-between py-1">
                                     <span class="text-slate-500">Yükleme Tarihi:</span>
@@ -276,7 +346,7 @@
 
             <div id="view-help" class="view-panel hidden max-w-2xl mx-auto space-y-4">
                 <div class="text-center py-2">
-                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#242729] text-[#1a73e8] border border-[#2d3134] text-xl mb-1.5">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#080808] text-[#1a73e8] border border-[#111111] text-xl mb-1.5">
                         <i class="fa-solid fa-circle-question"></i>
                     </div>
                     <h2 class="text-lg md:text-xl font-extrabold text-white uppercase tracking-wide">
@@ -285,25 +355,25 @@
                     <div class="h-1 w-10 bg-[#1a73e8] mx-auto rounded mt-1.5"></div>
                 </div>
 
-                <div class="bg-[#242729] border border-[#2d3134] rounded-lg p-5 text-slate-300 space-y-4">
+                <div class="bg-[#080808] border border-[#111111] rounded-lg p-5 text-slate-300 space-y-4">
                     <p class="text-xs md:text-sm text-slate-200 font-bold leading-relaxed text-center">
                         Sıralamaya Girebilmcek İçin Yaptığınız Speedrun Videosunu Youtubeye Atıp Video Linkini <span class="text-[#1a73e8] underline font-extrabold">@turkomen74</span> Tiktok Hesabına Mesaj Olarak Atarsanız Speedrun Yaptığınız Oyuna Göre Sıralamaya Eklerinsiniz.
                     </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-[#2d3134] text-xs">
-                        <div class="bg-[#181a1b] border border-[#2d3134] p-3 rounded">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-[#111111] text-xs">
+                        <div class="bg-[#000000] border border-[#111111] p-3 rounded">
                             <span class="text-[9px] font-extrabold text-[#1a73e8] uppercase">ADIM 1</span>
                             <h4 class="font-bold text-white mt-0.5">Videonuzu Çekin</h4>
                             <p class="text-[10px] text-slate-400 mt-1">TURKOMEN oyununun bitirme sürecini kesintisiz kaydedin.</p>
                         </div>
 
-                        <div class="bg-[#181a1b] border border-[#2d3134] p-3 rounded">
+                        <div class="bg-[#000000] border border-[#111111] p-3 rounded">
                             <span class="text-[9px] font-extrabold text-[#1a73e8] uppercase">ADIM 2</span>
                             <h4 class="font-bold text-white mt-0.5">YouTube Yükleme</h4>
                             <p class="text-[10px] text-slate-400 mt-1">Videoyu YouTube kanalınıza herkese açık yükleyin.</p>
                         </div>
 
-                        <div class="bg-[#181a1b] border border-[#2d3134] p-3 rounded">
+                        <div class="bg-[#000000] border border-[#111111] p-3 rounded">
                             <span class="text-[9px] font-extrabold text-[#1a73e8] uppercase">ADIM 3</span>
                             <h4 class="font-bold text-white mt-0.5">Tiktok Mesaj</h4>
                             <p class="text-[10px] text-slate-400 mt-1">Video linkini <strong class="text-[#1a73e8]">@turkomen74</strong> TikTok hesabına iletin.</p>
@@ -312,7 +382,7 @@
                 </div>
 
                 <div class="text-center pt-2">
-                    <a href="https://www.tiktok.com/@turkomen74" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-black hover:bg-slate-900 text-white font-bold text-xs py-2 px-4 rounded-md transition-colors border border-[#2d3134]">
+                    <a href="https://www.tiktok.com/@turkomen74" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-black hover:bg-neutral-900 text-white font-bold text-xs py-2 px-4 rounded-md transition-colors border border-[#111111]">
                         <i class="fa-brands fa-tiktok text-sm"></i>
                         @turkomen74 TikTok Profiline Git
                     </a>
@@ -329,6 +399,15 @@
                 title: 'Eve Hoş Geldin',
                 cover: 'evehosgeldin.png',
                 description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İlk Bölümü',
+                platform: 'PC',
+                runs: []
+            },
+            'game-4': {
+                id: 'game-4',
+                title: 'Eve Hoş Geldin REMAKE',
+                cover: 'evehosgeldinremake.png',
+                description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İlk Bölümünün Yeniden Yapılmış Versiyonu',
+                platform: 'PC',
                 runs: []
             },
             'game-2': {
@@ -336,6 +415,7 @@
                 title: 'Evden Kaç',
                 cover: 'evdenkac.png',
                 description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İkinci Bölümü',
+                platform: 'PC',
                 runs: []
             },
             'game-3': {
@@ -343,6 +423,7 @@
                 title: 'Evden Kaçamazsın',
                 cover: 'evdenkacamazsin.png',
                 description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun Üçüncü/Final Bölümü',
+                platform: 'PC',
                 runs: [
                     {
                         rank: 1,
@@ -353,8 +434,71 @@
                         youtube: 'https://www.youtube.com/watch?v=JjUDck_x1Oo'
                     }
                 ]
+            },
+            'game-m1': {
+                id: 'game-m1',
+                title: 'Eve Hoş Geldin Mobile',
+                cover: 'evehosgeldinandroid.png',
+                description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İlk Bölümünün Mobil Versiyonu',
+                platform: 'Mobil',
+                runs: []
+            },
+            'game-m4': {
+                id: 'game-m4',
+                title: 'Eve Hoş Geldin REMAKE Mobile',
+                cover: 'evehosgeldinremakeandroid.png',
+                description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İlk Bölümünün Yeniden Yapılmış Versiyonunun Mobil Versiyonu',
+                platform: 'Mobil',
+                runs: []
+            },
+            'game-m2': {
+                id: 'game-m2',
+                title: 'Evden Kaç Mobile',
+                cover: 'evdenkacandroid.png',
+                description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İkinci Bölümünün Mobil Versiyonu',
+                platform: 'Mobil',
+                runs: []
+            },
+            'game-m3': {
+                id: 'game-m3',
+                title: 'Evden Kaçamazsın Mobile',
+                cover: 'evdenkacamassinandroid.png',
+                description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun Üçüncü/Final Bölümünün Mobil Versiyonu',
+                platform: 'Mobil',
+                runs: []
             }
         };
+
+        let currentActivePlatform = 'pc';
+
+        function filterPlatform(platform) {
+            currentActivePlatform = platform;
+            
+            const btnPc = document.getElementById('btn-platform-pc');
+            const btnMobile = document.getElementById('btn-platform-mobile');
+            
+            if (platform === 'pc') {
+                btnPc.className = "flex-1 text-center py-2 rounded text-xs font-bold transition-all bg-[#1a73e8] text-white";
+                btnMobile.className = "flex-1 text-center py-2 rounded text-xs font-bold transition-all text-slate-400 hover:text-white";
+                document.getElementById('game-count-badge').innerText = "4 OYUN";
+            } else {
+                btnMobile.className = "flex-1 text-center py-2 rounded text-xs font-bold transition-all bg-[#1a73e8] text-white";
+                btnPc.className = "flex-1 text-center py-2 rounded text-xs font-bold transition-all text-slate-400 hover:text-white";
+                document.getElementById('game-count-badge').innerText = "4 OYUN";
+            }
+
+            document.querySelectorAll('#games-list-nav button').forEach(button => {
+                if (button.getAttribute('data-platform') === platform) {
+                    button.classList.remove('hidden');
+                    button.classList.add('flex');
+                } else {
+                    button.classList.add('hidden');
+                    button.classList.remove('flex');
+                }
+            });
+
+            navigateTo('home');
+        }
 
         function navigateTo(viewId) {
             document.querySelectorAll('.view-panel').forEach(panel => {
@@ -387,6 +531,7 @@
 
             document.getElementById('game-title').innerText = game.title;
             document.getElementById('game-description').innerText = game.description;
+            document.getElementById('game-platform-badge').innerText = game.platform;
 
             const imgBox = document.getElementById('game-cover');
             imgBox.src = game.cover;
@@ -409,9 +554,9 @@
 
                 game.runs.forEach(run => {
                     const row = document.createElement('tr');
-                    row.className = "hover:bg-[#242729] cursor-pointer border-b border-[#2d3134] transition-colors";
+                    row.className = "hover:bg-[#080808] cursor-pointer border-b border-[#111111] transition-colors";
                     row.onclick = function() {
-                        openRunDetails(run);
+                        openRunDetails(run, gameId);
                     };
 
                     row.innerHTML = `
@@ -428,7 +573,7 @@
                         </td>
                         <td class="py-3 px-4">
                             <div class="flex items-center gap-2">
-                                <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/242729/ffffff?text=U'" class="w-6 h-6 rounded-full object-cover border border-[#2d3134]" alt="Avatar">
+                                <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/080808/ffffff?text=U'" class="w-6 h-6 rounded-full object-contain border border-[#111111]" alt="Avatar">
                                 <div class="flex items-center gap-1.5">
                                     <span class="font-extrabold text-[#1a73e8] hover:underline">${run.username}</span>
                                     <span class="text-[9px]" title="Türkiye">🇹🇷</span>
@@ -438,7 +583,7 @@
                         </td>
                         <td class="py-3 px-4 text-center font-bold text-white">${run.time}</td>
                         <td class="py-3 px-4 text-center">
-                            <span class="bg-[#242729] border border-[#2d3134] px-2 py-0.5 rounded text-[9px] text-slate-300 font-extrabold uppercase">${run.platform}</span>
+                            <span class="bg-[#000000] border border-[#111111] px-2 py-0.5 rounded text-[9px] text-slate-300 font-extrabold uppercase">${run.platform}</span>
                         </td>
                         <td class="py-3 px-4 text-center text-slate-500">${run.date}</td>
                         <td class="py-3 px-4 text-right">
@@ -454,8 +599,19 @@
             navigateTo('game-detail');
         }
 
-        function openRunDetails(run) {
+        function openRunDetails(run, gameId) {
+            const game = gamesData[gameId];
             document.getElementById('run-detail-user').innerText = run.username;
+            document.getElementById('run-detail-game').innerText = game ? game.title : "Evden Kaçamazsın";
+            document.getElementById('run-detail-platform').innerText = game ? game.platform : "PC";
+            
+            const backBtn = document.getElementById('run-back-game-btn');
+            if (backBtn && game) {
+                backBtn.innerText = game.title;
+                backBtn.onclick = function() {
+                    navigateToGame(gameId);
+                };
+            }
             
             const watchBtn = document.getElementById('run-video-button');
             if (watchBtn) {
@@ -466,7 +622,7 @@
         }
 
         window.onload = function() {
-            navigateTo('home');
+            filterPlatform('pc');
         };
     </script>
 </body>
