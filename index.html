@@ -156,7 +156,10 @@
                             <img src="evehosgeldinremakeandroid.png" onerror="this.src='https://placehold.co/80x100/1a73e8/ffffff?text=Eve+Hoş+Geldin+REMAKE+Mobile'" class="w-full h-full object-contain" alt="Eve Hoş Geldin REMAKE Mobile">
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin REMAKE Mobile</p>
+                            <div class="flex items-center gap-1">
+                                <p class="text-xs font-bold text-slate-200 truncate">Eve Hoş Geldin REMAKE Mobile</p>
+                                <span class="bg-amber-500 text-amber-950 text-[8px] font-bold px-1 rounded">1 Rekor</span>
+                            </div>
                             <span class="text-[9px] text-slate-500 block truncate">TURKOMEN • Bölüm 1 Remake Mobil</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
@@ -268,7 +271,7 @@
                     <i class="fa-solid fa-angle-right text-[9px]"></i>
                     <span class="text-slate-300">Koşu Detayı</span>
                     <i class="fa-solid fa-angle-right text-[9px]"></i>
-                    <span class="text-[#1a73e8]">@korkioyunlarioynuyorum (04:47)</span>
+                    <span id="run-detail-breadcrumb-user" class="text-[#1a73e8]">@korkioyunlarioynuyorum (04:47)</span>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
@@ -284,17 +287,17 @@
                             </div>
                             <div class="p-4 flex items-center justify-between text-slate-200 bg-[#080808]">
                                 <div class="flex items-center gap-2.5">
-                                    <div class="w-8 h-8 rounded bg-amber-500 text-amber-950 font-black text-xs flex items-center justify-center">
+                                    <div id="run-badge-rank" class="w-8 h-8 rounded bg-amber-500 text-amber-950 font-black text-xs flex items-center justify-center">
                                         1st
                                     </div>
                                     <div>
-                                        <h3 class="font-extrabold text-xs text-white">Any% Dünya Rekoru (WR)</h3>
+                                        <h3 id="run-badge-title" class="font-extrabold text-xs text-white">Any% Dünya Rekoru (WR)</h3>
                                         <p class="text-[10px] text-slate-400">Kategori: <span class="text-[#1a73e8] font-semibold">Any%</span></p>
                                     </div>
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[9px] text-slate-500 block font-bold uppercase">REKOR SÜRE</span>
-                                    <span class="text-base font-black text-[#1a73e8]">04d 47s</span>
+                                    <span id="run-badge-time" class="text-base font-black text-[#1a73e8]">04d 47s</span>
                                 </div>
                             </div>
                         </div>
@@ -304,7 +307,7 @@
                         <div class="bg-[#080808] border border-[#111111] rounded-lg p-4 text-slate-300 space-y-4">
                             <div class="text-center pb-3 border-b border-[#111111]">
                                 <div class="w-16 h-16 mx-auto rounded-full bg-[#000000] border border-[#111111] flex items-center justify-center overflow-hidden">
-                                    <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/64x64/080808/ffffff?text=U'" class="w-full h-full object-cover" alt="Avatar">
+                                    <img id="run-detail-avatar" src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/64x64/080808/ffffff?text=U'" class="w-full h-full object-cover" alt="Avatar">
                                 </div>
                                 <h4 id="run-detail-user" class="text-sm font-extrabold text-white mt-2">@korkioyunlarioynuyorum</h4>
                                 <div class="mt-2.5 flex justify-center">
@@ -316,7 +319,7 @@
 
                             <div class="p-3 bg-[#0c1524] border border-[#1a73e8]/30 rounded-md text-center">
                                 <h5 class="text-[9px] font-extrabold text-[#1a73e8] uppercase tracking-widest mb-1">Geliştirici Başarı Tebriği</h5>
-                                <p class="text-xs font-bold text-white leading-relaxed">
+                                <p id="run-congrats-text" class="text-xs font-bold text-white leading-relaxed">
                                     @korkioyunlarioynuyorum ADLI KULLANICI OYUNUMUZU 4 DAKİKA 47 SANİYE İLE BİTEREREK LİSTENİN BİRİNCİ SIRASINDA YER ALMIŞTIR.
                                 </p>
                             </div>
@@ -428,6 +431,7 @@
                     {
                         rank: 1,
                         username: '@korkioyunlarioynuyorum',
+                        avatar: 'korkioyunlarioynuyorum.png',
                         time: '04m 47s',
                         platform: 'PC',
                         date: '29.06.2026',
@@ -449,7 +453,17 @@
                 cover: 'evehosgeldinremakeandroid.png',
                 description: 'TURKOMEN Tarafından Geliştirilen Fan Yapımı Poppy Playtime Korku Oyununun İlk Bölümünün Yeniden Yapılmış Versiyonunun Mobil Versiyonu',
                 platform: 'Mobil',
-                runs: []
+                runs: [
+                    {
+                        rank: 1,
+                        username: '@SeloGames121',
+                        avatar: 'selo.jpg',
+                        time: '03m 47s',
+                        platform: 'Mobil',
+                        date: '04.07.2026',
+                        youtube: 'https://www.youtube.com/watch?v=uX1jPQJV954'
+                    }
+                ]
             },
             'game-m2': {
                 id: 'game-m2',
@@ -573,7 +587,7 @@
                         </td>
                         <td class="py-3 px-4">
                             <div class="flex items-center gap-2">
-                                <img src="korkioyunlarioynuyorum.png" onerror="this.onerror=null; this.src='https://placehold.co/24x24/080808/ffffff?text=U'" class="w-6 h-6 rounded-full object-contain border border-[#111111]" alt="Avatar">
+                                <img src="${run.avatar || 'korkioyunlarioynuyorum.png'}" onerror="this.onerror=null; this.src='https://placehold.co/24x24/080808/ffffff?text=U'" class="w-6 h-6 rounded-full object-contain border border-[#111111]" alt="Avatar">
                                 <div class="flex items-center gap-1.5">
                                     <span class="font-extrabold text-[#1a73e8] hover:underline">${run.username}</span>
                                     <span class="text-[9px]" title="Türkiye">🇹🇷</span>
@@ -605,6 +619,39 @@
             document.getElementById('run-detail-game').innerText = game ? game.title : "Evden Kaçamazsın";
             document.getElementById('run-detail-platform').innerText = game ? game.platform : "PC";
             
+            const breadcrumbUser = document.getElementById('run-detail-breadcrumb-user');
+            if (breadcrumbUser) {
+                breadcrumbUser.innerText = `${run.username} (${run.time})`;
+            }
+
+            const runAvatar = document.getElementById('run-detail-avatar');
+            if (runAvatar) {
+                runAvatar.src = run.avatar || 'korkioyunlarioynuyorum.png';
+                runAvatar.onerror = function() {
+                    this.src = `https://placehold.co/64x64/080808/ffffff?text=${encodeURIComponent(run.username.charAt(1))}`;
+                };
+            }
+
+            const congratsText = document.getElementById('run-congrats-text');
+            if (congratsText) {
+                congratsText.innerText = `${run.username.toUpperCase()} ADLI KULLANICI OYUNUMUZU ${run.time.toUpperCase()} İLE BİTİREREK LİSTENİN BİRİNCİ SIRASINDA YER ALMIŞTIR.`;
+            }
+
+            const badgeRank = document.getElementById('run-badge-rank');
+            if (badgeRank) {
+                badgeRank.innerText = run.rank === 1 ? '1st' : `${run.rank}`;
+            }
+
+            const badgeTitle = document.getElementById('run-badge-title');
+            if (badgeTitle) {
+                badgeTitle.innerText = run.rank === 1 ? 'Any% Dünya Rekoru (WR)' : 'Any% Sıralama Derecesi';
+            }
+
+            const badgeTime = document.getElementById('run-badge-time');
+            if (badgeTime) {
+                badgeTime.innerText = run.time;
+            }
+
             const backBtn = document.getElementById('run-back-game-btn');
             if (backBtn && game) {
                 backBtn.innerText = game.title;
